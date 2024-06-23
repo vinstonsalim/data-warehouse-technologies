@@ -1,0 +1,28 @@
+setwd("D:/data-warehouse-technologies/prak4/tutorial")
+
+train <- read.csv("../data/train.csv", stringsAsFactors=FALSE)
+test <- read.csv("../data/test.csv")
+
+#int -> whole number
+#num -> hold decimal
+#factor -> its like category
+
+View(train)
+#View(test)
+
+str(train)
+#str(test)
+
+#Isolate column
+#table(train$Sex)
+#table(train$Survivor)
+
+#Isolate column in percent
+#prop.table(table(train$Survived))
+#prop.table(table(train$Sex))
+
+test$Survived <- rep(0, 418)
+
+submit <- data.frame(PassengerId = test$PassengerId, Survived = test$Survived)
+write.csv(submit, file = "theyallperish.csv", row.names = FALSE)
+
